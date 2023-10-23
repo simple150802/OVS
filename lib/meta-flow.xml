@@ -4121,6 +4121,21 @@ r c c c r.
       OpenFlow.
     </field>
 
+    <field id="MFF_IP_ID" title="IPv4 Identification">
+      This field uses to match tunnel packets which identification is hash from
+      inner ip. This can use to routing tunnel traffic.  Hai mod. 
+    </field>
+
+    <field id="MFF_IP_OPTIONS1" title="IPv4 Options1">
+      This field uses to match tunnel packets which have IP src VM inner HV 
+      . This can use to routing tunnel traffic.  Tuan Anh mod. 
+    </field>
+
+    <field id="MFF_IP_OPTIONS2" title="IPv4 Options2">
+      This field uses to match tunnel packets which have IP des VM inner HV 
+      . This can use to routing tunnel traffic.  Tuan Anh mod. 
+    </field>
+
     <field id="MFF_IP_FRAG" title="IPv4/v6 Fragment Bitmask">
       <p>
         Specifies what kinds of IP fragments or non-fragments to match.  The

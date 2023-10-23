@@ -986,7 +986,26 @@ match_set_nw_ttl(struct match *match, uint8_t nw_ttl)
     match->wc.masks.nw_ttl = UINT8_MAX;
     match->flow.nw_ttl = nw_ttl;
 }
-
+/*Hai mod*/
+void
+match_set_nw_id(struct match *match, ovs_be16 nw_id)
+{
+    match->wc.masks.nw_id = OVS_BE16_MAX;
+    match->flow.nw_id = nw_id;
+}
+/*Tuan Anh mod*/
+void
+match_set_nw_options1(struct match *match, ovs_be32 nw_options1) 
+{
+    match->flow.nw_options1 = nw_options1;
+    match->wc.masks.nw_options1 = OVS_BE32_MAX; 
+}
+void
+match_set_nw_options2(struct match *match, ovs_be32 nw_options2) 
+{
+    match->flow.nw_options2 = nw_options2;
+    match->wc.masks.nw_options2 = OVS_BE32_MAX; 
+}
 void
 match_set_nw_tos_masked(struct match *match, uint8_t nw_tos, uint8_t mask)
 {
@@ -1718,6 +1737,18 @@ match_format(const struct match *match,
         ds_put_format(s, "%snw_ttl=%s%d,",
                       colors.param, colors.end, f->nw_ttl);
     }
+    /*Hai mod*/
+    if (wc->masks.nw_id) {
+        ds_put_format(s, "%snw_id=%s%#"PRIx16",",
+                      colors.param, colors.end, f->nw_id);
+    }
+    /*Tuan Anh mod*/
+    if (wc->masks.nw_options1) {
+        format_ip_netmask(s, "nw_options1", f->nw_options1, wc->masks.nw_options1);
+    }
+    if (wc->masks.nw_options2) {
+        format_ip_netmask(s, "nw_options2", f->nw_options2, wc->masks.nw_options2);
+    }    
     if (wc->masks.mpls_lse[0] & htonl(MPLS_LABEL_MASK)) {
         ds_put_format(s, "%smpls_label=%s%"PRIu32",", colors.param,
                       colors.end, mpls_lse_to_label(f->mpls_lse[0]));

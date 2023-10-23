@@ -141,6 +141,10 @@ struct flow {
     uint8_t nw_tos;             /* IP ToS (including DSCP and ECN). */
     uint8_t nw_ttl;             /* IP TTL/Hop Limit. */
     uint8_t nw_proto;           /* IP protocol or low 8 bits of ARP opcode. */
+    ovs_be32 nw_options1;
+    ovs_be32 nw_options2;
+    ovs_be16 nw_id;                /*IP TAindentification*/
+    ovs_be16 pad4[3];              /*TA mod- padding for network standard*/
     /* L4 (64-bit aligned) */
     struct in6_addr nd_target;  /* IPv6 neighbor discovery (ND) target. */
     struct eth_addr arp_sha;    /* ARP/ND source hardware address. */
@@ -165,8 +169,9 @@ BUILD_ASSERT_DECL(sizeof(struct ovs_key_nsh) % sizeof(uint64_t) == 0);
 #define FLOW_U64S (sizeof(struct flow) / sizeof(uint64_t))
 
 /* Remember to update FLOW_WC_SEQ when changing 'struct flow'. */
+/*add 14 bytes id+opt and 2 bytes pad*/
 BUILD_ASSERT_DECL(offsetof(struct flow, igmp_group_ip4) + sizeof(uint32_t)
-                  == sizeof(struct flow_tnl) + sizeof(struct ovs_key_nsh) + 300
+                  == sizeof(struct flow_tnl) + sizeof(struct ovs_key_nsh) + 316
                   && FLOW_WC_SEQ == 42);
 
 /* Incremental points at which flow classification may be performed in

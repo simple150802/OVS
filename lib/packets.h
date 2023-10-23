@@ -737,7 +737,7 @@ IP_ECN_is_ce(uint8_t dsfield)
 #define IP_IS_FRAGMENT(ip_frag_off) \
         ((ip_frag_off) & htons(IP_MORE_FRAGMENTS | IP_FRAG_OFF_MASK))
 
-#define IP_HEADER_LEN 20
+#define IP_HEADER_LEN 28 /*Tuan Anh mod 20+8*/
 struct ip_header {
     uint8_t ip_ihl_ver;
     uint8_t ip_tos;
@@ -749,6 +749,8 @@ struct ip_header {
     ovs_be16 ip_csum;
     ovs_16aligned_be32 ip_src;
     ovs_16aligned_be32 ip_dst;
+    ovs_be32 ip_options1; /*Tuan Anh mod*/
+    ovs_be32 ip_options2; /*Tuan Anh mod*/
 };
 BUILD_ASSERT_DECL(IP_HEADER_LEN == sizeof(struct ip_header));
 

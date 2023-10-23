@@ -340,7 +340,14 @@ mf_is_all_wild(const struct mf_field *mf, const struct flow_wildcards *wc)
         return !(wc->masks.nw_tos & IP_ECN_MASK);
     case MFF_IP_TTL:
         return !wc->masks.nw_ttl;
-
+    /*Tuan Anh mod*/
+    case MFF_IP_OPTIONS1:
+        return !wc->masks.nw_options1;
+    case MFF_IP_OPTIONS2:
+        return !wc->masks.nw_options2;
+        /*Hai mod*/
+    case MFF_IP_ID:
+        return !wc->masks.nw_id; 
     case MFF_ND_TARGET:
         return ipv6_mask_is_any(&wc->masks.nd_target);
 

@@ -1344,6 +1344,48 @@ enum OVS_PACKED_ENUM mf_field_id {
      */
     MFF_IPV4_DST,
 
+     /* "nw_id".
+     *
+     * IPv4 identification bits - Hai mod.
+     *
+     * Type: be16.
+     * Maskable: no.
+     * Formatting: decimal.
+     * Prerequisites: IPv4.
+     * Access: read/write.
+     * NXM: none.
+     * OXM: FILOXM_ET_IP_ID(1) since v2.8.
+     */
+    MFF_IP_ID,
+
+    /* "nw_options1".
+     *
+     * IPv4 options1 bits - Tuan Anh mod.
+     *
+     * Type: be32.
+     * Maskable: no.
+     * Formatting: IPv4.
+     * Prerequisites: IPv4.
+     * Access: read/write.
+     * NXM: none.
+     * OXM: FIL2OXM_ET_IP_OP(1) since v2.8.
+     */
+    MFF_IP_OPTIONS1,
+
+    /* "nw_options2".
+     *
+     * IPv4 options2 bits - Tuan Anh mod.
+     *
+     * Type: be32.
+     * Maskable: no.
+     * Formatting: IPv4.
+     * Prerequisites: IPv4.
+     * Access: read/write.
+     * NXM: none.
+     * OXM: FIL3OXM_ET_IP_OP(1) since v2.8.
+     */
+    MFF_IP_OPTIONS2,
+
 /* ## ---- ## */
 /* ## IPv6 ## */
 /* ## ---- ## */

@@ -203,6 +203,9 @@ void match_set_nw_dst_masked(struct match *, ovs_be32 ip, ovs_be32 mask);
 void match_set_nw_dscp(struct match *, uint8_t);
 void match_set_nw_ecn(struct match *, uint8_t);
 void match_set_nw_ttl(struct match *, uint8_t nw_ttl);
+void match_set_nw_options1(struct match *, ovs_be32 nw_options1); /*Tuan Anh mod*/
+void match_set_nw_options2(struct match *, ovs_be32 nw_options2); /*Tuan Anh mod*/
+void match_set_nw_id(struct match *, ovs_be16 nw_id); /*Hai mod*/
 void match_set_nw_ttl_masked(struct match *, uint8_t nw_ttl, uint8_t mask);
 void match_set_nw_tos_masked(struct match *, uint8_t nw_tos, uint8_t mask);
 void match_set_nw_frag(struct match *, uint8_t nw_frag);
